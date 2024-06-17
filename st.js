@@ -25,6 +25,7 @@ $(function () {
             1,
             location.pathname.lastIndexOf("-")
         );
+        path = path.substring(path.lastIndexOf("/") + 1);
         console.log(path);
         var name = path;
         console.log(name);
