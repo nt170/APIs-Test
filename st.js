@@ -16,15 +16,18 @@ $(function () {
         $this.addClass("current");
 
         loadContent(href);
+        // history.pushState("", $this.text(), $this.attr("href"));
         history.pushState("", $this.text(), href);
     });
 
     window.onpopstate = function () {
-        var path = location.pathname + ".html";
+        var path = location.pathname;
+        console.log(path);
         var name = location.pathname.substring(
             location.pathname.lastIndexOf("/") + 1
         );
-        console.log(path);
+        name = name.substring(0, name.lastIndexOf("."));
+        console.log(name);
         $("a").removeClass("current");
         $("[href=" + name + "]").addClass("current");
         loadContent(path);
