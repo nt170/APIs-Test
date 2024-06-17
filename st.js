@@ -16,7 +16,7 @@ $(function () {
         $this.addClass("current");
 
         loadContent(href);
-        history.pushState("", $this.text(), $this.attr("href"));
+        history.pushState("", $this.text(), href);
     });
 
     window.onpopstate = function () {
