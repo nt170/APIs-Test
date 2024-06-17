@@ -16,20 +16,20 @@ $(function () {
         $this.addClass("current");
 
         loadContent(href);
-        // history.pushState("", $this.text(), $this.attr("href"));
-        history.pushState("", $this.text(), href);
+        history.pushState("", $this.text(), $this.attr("href") + "-page");
+        // history.pushState("", $this.text(), href);
     });
 
     window.onpopstate = function () {
-        var path = location.pathname;
-        console.log(path);
-        var name = location.pathname.substring(
-            location.pathname.lastIndexOf("/") + 1
+        var path = location.pathname.substring(
+            1,
+            location.pathname.lastIndexOf("-")
         );
-        name = name.substring(0, name.lastIndexOf("."));
+        console.log(path);
+        var name = path;
         console.log(name);
         $("a").removeClass("current");
         $("[href=" + name + "]").addClass("current");
-        loadContent(path);
+        loadContent(path + ".html");
     };
 });
